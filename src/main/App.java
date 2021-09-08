@@ -31,5 +31,6 @@ public class App
             }
         }
         System.out.print(VehicleAssemblyBay.buildRocket(s));
+        scan.close();
     }
 }
