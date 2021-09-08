@@ -4,6 +4,41 @@ import java.util.Arrays;
 
 public class VehicleAssemblyBay
 {
+    public static String buildRocket(int size)
+    {
+        // Rocket builder
+        // (pretend it says new RocketBuilder())
+        var rocketAssembly = new StringBuilder();
+        
+        // The Parts
+        var sectionSeperator = buildSectionSeperator(size);
+        var firstSectionHalf = buildFirstSectionHalf(size);
+        var secondSectionHalf = buildSecondSectionHalf(size);
+        var makeshiftEngine = buildMakeshiftEngine(size);
+
+        // Command Pod
+        rocketAssembly.append(buildCommandPod(size));
+
+        rocketAssembly.append(sectionSeperator);
+        
+        // First Fuelselage
+        rocketAssembly.append(firstSectionHalf);
+        rocketAssembly.append(secondSectionHalf);
+        
+        rocketAssembly.append(sectionSeperator);
+        
+        // Second Fuelselage
+        rocketAssembly.append(secondSectionHalf);
+        rocketAssembly.append(firstSectionHalf);
+        
+        rocketAssembly.append(sectionSeperator);
+
+        // Attach the engine
+        rocketAssembly.append(makeshiftEngine);
+
+        // And we are good to go!
+        return rocketAssembly.toString();
+    }
     static String buildCommandPod(int size)
     {
         // Size bodgery with the command pod. Not the most fun thing to figure out...
@@ -102,25 +137,6 @@ public class VehicleAssemblyBay
         }
         return sectionAssembly.toString();
     }
-    static String buildSectionSeperator(int size)
-    {
-        var width = size * 4 + 2;
-        var seperatorAssembly = new StringBuilder();
-        seperatorAssembly.append("+");
-
-        // The seperator
-        for (int i = 1; i <= width-2; ++i)
-        {
-            // Every odd number is an "=" and every even number is a "*"
-            if (i % 2 == 0)
-                seperatorAssembly.append("*");
-            else
-                seperatorAssembly.append("=");
-        }
-
-        seperatorAssembly.append("+\n");
-        return seperatorAssembly.toString();
-    }
     static String buildMakeshiftEngine(int size)
     {
         // CRAP! We accidentally ordered two command pods instead of one engine and one pod!
@@ -144,39 +160,23 @@ public class VehicleAssemblyBay
 
         return probablyNotASpaceCertifiedEngine;
     }
-    public static String buildRocket(int size)
+    static String buildSectionSeperator(int size)
     {
-        // Rocket builder
-        // (pretend it says new RocketBuilder())
-        var rocketAssembly = new StringBuilder();
-        
-        // The Parts
-        var sectionSeperator = buildSectionSeperator(size);
-        var firstSectionHalf = buildFirstSectionHalf(size);
-        var secondSectionHalf = buildSecondSectionHalf(size);
-        var makeshiftEngine = buildMakeshiftEngine(size);
+        var width = size * 4 + 2;
+        var seperatorAssembly = new StringBuilder();
+        seperatorAssembly.append("+");
 
-        // Command Pod
-        rocketAssembly.append(buildCommandPod(size));
+        // The seperator
+        for (int i = 1; i <= width-2; ++i)
+        {
+            // Every odd number is an "=" and every even number is a "*"
+            if (i % 2 == 0)
+                seperatorAssembly.append("*");
+            else
+                seperatorAssembly.append("=");
+        }
 
-        rocketAssembly.append(sectionSeperator);
-        
-        // First Fuelselage
-        rocketAssembly.append(firstSectionHalf);
-        rocketAssembly.append(secondSectionHalf);
-        
-        rocketAssembly.append(sectionSeperator);
-        
-        // Second Fuelselage
-        rocketAssembly.append(secondSectionHalf);
-        rocketAssembly.append(firstSectionHalf);
-        
-        rocketAssembly.append(sectionSeperator);
-
-        // Attach the engine
-        rocketAssembly.append(makeshiftEngine);
-
-        // And we are good to go!
-        return rocketAssembly.toString();
+        seperatorAssembly.append("+\n");
+        return seperatorAssembly.toString();
     }
 }
