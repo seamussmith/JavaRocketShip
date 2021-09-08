@@ -1,6 +1,5 @@
 package main;
 
-import java.util.Arrays;
 import gov.nasa.rocketbuildingtools.VehicleAssemblyBay;
 
 public class App

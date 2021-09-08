@@ -2,7 +2,8 @@ package gov.nasa.rocketbuildingtools;
 
 import java.util.Arrays;
 
-public class VehicleAssemblyBay {
+public class VehicleAssemblyBay
+{
     static String buildCommandPod(int size)
     {
         // Only increase width of mid section every even size
