@@ -4,9 +4,11 @@ public class App
 {
     public static void main(String[] args) 
     {
-        int s = 5;
+        int s = 3;
         System.out.print(buildCommandPod(s));
         System.out.print(buildSectionSeperator(s));
+        System.out.print(buildFirstSectionHalf(s));
+        System.out.print(buildSecondSectionHalf(s));
     }
     static String buildCommandPod(int size)
     {
@@ -40,13 +42,50 @@ public class App
 
         return commandAssembly.toString();
     }
-    static String buildSection(int size)
+    static String buildFirstSectionHalf(int size)
     {
-        return null;
+        var sectionAssembly = new StringBuilder();
+        for (int i = size; i > 0; --i)
+        {
+            sectionAssembly.append("|");
+            for (int j = 0; j < size + (size - i); ++j)
+            {
+                sectionAssembly.append(".");
+            }
+            for (int j = 0; j < size + (i - size); ++j)
+            {
+                sectionAssembly.append("\\/");
+            }
+            for (int j = 0; j < size + (size - i); ++j)
+            {
+                sectionAssembly.append(".");
+            }
+            sectionAssembly.append("|\n");
+        }
+        return sectionAssembly.toString();
     }
-    static String buildSectionReverse(int size)
+    
+    static String buildSecondSectionHalf(int size)
     {
-        return null;
+        var sectionAssembly = new StringBuilder();
+        for (int i = 1; i <= size; ++i)
+        {
+            sectionAssembly.append("|");
+            for (int j = 0; j < size + (size - i); ++j)
+            {
+                sectionAssembly.append(".");
+            }
+            for (int j = 0; j < size + (i - size); ++j)
+            {
+                sectionAssembly.append("/\\");
+            }
+            for (int j = 0; j < size + (size - i); ++j)
+            {
+                sectionAssembly.append(".");
+            }
+            sectionAssembly.append("|\n");
+        }
+        return sectionAssembly.toString();
     }
     static String buildSectionSeperator(int size)
     {
@@ -60,7 +99,7 @@ public class App
             else
                 seperatorAssembly.append("=");
         }
-        seperatorAssembly.append("+");
+        seperatorAssembly.append("+\n");
         return seperatorAssembly.toString();
     }
     static String buildRocket(int size)
