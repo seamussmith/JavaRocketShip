@@ -4,34 +4,33 @@ public class App
 {
     public static void main(String[] args) 
     {
-        System.out.println(buildCommandPod(4));
+        int s = 6;
+        System.out.print(buildCommandPod(s));
+        System.out.print(buildSectionSeperator(s));
     }
     static String buildCommandPod(int size)
     {
-        var width = size * 4;
-        var midAssembly = "*".repeat(size-1);
+        // Only increase size of mid section every two sizes
+        var midAssembly = "*".repeat(size-(size%2));
 
         var commandAssembly = new StringBuilder();
 
-        for (int i = 0; i != size+2; ++i)
+        var sizeAddition = size/2 + (size%2);
+
+        for (int i = 0; i != size+sizeAddition; ++i)
         {
-            int x = 2;
-            for (int j = 0; j < (size+2) - (i + 1); ++j)
+            for (int j = 0; j < (size+sizeAddition) - i; ++j)
             {
                 commandAssembly.append(" ");
             }
-            for (int j = 0; j < i + 1; ++j)
+            for (int j = 0; j <= i; ++j)
             {
                 commandAssembly.append("/");
             }
             commandAssembly.append(midAssembly);
-            for (int j = 0; j < i + 1; ++j)
+            for (int j = 0; j <= i; ++j)
             {
                 commandAssembly.append("\\");
-            }
-            for (int j = 0; j < 5 - (i + 1); ++j)
-            {
-                commandAssembly.append(" ");
             }
             commandAssembly.append('\n');
         }
@@ -48,7 +47,18 @@ public class App
     }
     static String buildSectionSeperator(int size)
     {
-        return null;
+        var width = size * 4 + 2;
+        var seperatorAssembly = new StringBuilder();
+        seperatorAssembly.append("+");
+        for (int i = 1; i <= width-2; ++i)
+        {
+            if (i % 2 == 0)
+                seperatorAssembly.append("*");
+            else
+                seperatorAssembly.append("=");
+        }
+        seperatorAssembly.append("+");
+        return seperatorAssembly.toString();
     }
     static String buildRocket(int size)
     {
