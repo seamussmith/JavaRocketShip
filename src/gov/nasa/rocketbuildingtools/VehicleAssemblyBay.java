@@ -99,15 +99,16 @@ public class VehicleAssemblyBay
     public static String buildRocket(int size)
     {
         var rocketAssembly = new StringBuilder();
+        var sectionSeperator = buildSectionSeperator(size);
 
         rocketAssembly.append(buildCommandPod(size));
-        rocketAssembly.append(buildSectionSeperator(size));
+        rocketAssembly.append(sectionSeperator);
         rocketAssembly.append(buildFirstSectionHalf(size));
         rocketAssembly.append(buildSecondSectionHalf(size));
-        rocketAssembly.append(buildSectionSeperator(size));
+        rocketAssembly.append(sectionSeperator);
         rocketAssembly.append(buildSecondSectionHalf(size));
         rocketAssembly.append(buildFirstSectionHalf(size));
-        rocketAssembly.append(buildSectionSeperator(size));
+        rocketAssembly.append(sectionSeperator);
 
         var spareCommandPod = buildCommandPod(size);
 

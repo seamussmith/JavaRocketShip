@@ -6,7 +6,7 @@ public class App
 {
     public static void main(String[] args) 
     {
-        int s = 5;
+        int s = 3;
         System.out.print(VehicleAssemblyBay.buildRocket(s));
     }
 }
