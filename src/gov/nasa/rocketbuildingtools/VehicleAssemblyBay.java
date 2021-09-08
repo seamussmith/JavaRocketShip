@@ -121,6 +121,29 @@ public class VehicleAssemblyBay
         seperatorAssembly.append("+\n");
         return seperatorAssembly.toString();
     }
+    static String buildMakeshiftEngine(int size)
+    {
+        // CRAP! We accidentally ordered two command pods instead of one engine and one pod!
+        // WHAT DO WE DO!?!?
+        // Uhhh, chop one up and make it into a makeshift engine! Yeah!
+
+        // Our victim
+        var spareCommandPod = buildCommandPod(size);
+
+        // Chop off the bottom most part of the command pod
+
+        var choppedPod = spareCommandPod.split("\n");
+
+        var choppedBottom = Arrays.copyOfRange(choppedPod, 0, choppedPod.length-1);
+
+        var probablyNotASpaceCertifiedEngine = String.join("\n", choppedBottom);
+        
+        // And make sure to take stuff out of the command pod!
+        // Wait a second... this is the end of the function...
+        // DONT FLY THAT SHIP!!!!
+
+        return probablyNotASpaceCertifiedEngine;
+    }
     public static String buildRocket(int size)
     {
         // Rocket builder
@@ -131,6 +154,7 @@ public class VehicleAssemblyBay
         var sectionSeperator = buildSectionSeperator(size);
         var firstSectionHalf = buildFirstSectionHalf(size);
         var secondSectionHalf = buildSecondSectionHalf(size);
+        var makeshiftEngine = buildMakeshiftEngine(size);
 
         // Command Pod
         rocketAssembly.append(buildCommandPod(size));
@@ -149,17 +173,10 @@ public class VehicleAssemblyBay
         
         rocketAssembly.append(sectionSeperator);
 
-        // The Engine
+        // Attach the engine
+        rocketAssembly.append(makeshiftEngine);
 
-        var spareCommandPod = buildCommandPod(size);
-
-        var choppedPod = spareCommandPod.split("\n");
-
-        var choppedBottom = Arrays.copyOfRange(choppedPod, 0, choppedPod.length-1);
-
-        var definitelyNotACommandPodWorkshoppedIntoARocketEngine = String.join("\n", choppedBottom);
-
-        rocketAssembly.append(definitelyNotACommandPodWorkshoppedIntoARocketEngine);
+        // And we are good to go!
         return rocketAssembly.toString();
     }
 }
