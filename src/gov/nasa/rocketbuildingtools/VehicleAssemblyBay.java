@@ -6,6 +6,8 @@ public class VehicleAssemblyBay
 {
     public static String buildRocket(int size)
     {
+        if (size <= 0)
+            throw new IllegalArgumentException("Size cannot be less than 0. Given: " + size);
         // Rocket builder
         // (pretend it says new RocketBuilder())
         var rocketAssembly = new StringBuilder();
