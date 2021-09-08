@@ -4,11 +4,39 @@ public class App
 {
     public static void main(String[] args) 
     {
-        System.out.println("Hello, World!");
+        System.out.println(buildCommandPod(4));
     }
     static String buildCommandPod(int size)
     {
-        return null;
+        var width = size * 4;
+        var midAssembly = "*".repeat(size-1);
+
+        var commandAssembly = new StringBuilder();
+
+        for (int i = 0; i != size+2; ++i)
+        {
+            int x = 2;
+            for (int j = 0; j < (size+2) - (i + 1); ++j)
+            {
+                commandAssembly.append(" ");
+            }
+            for (int j = 0; j < i + 1; ++j)
+            {
+                commandAssembly.append("/");
+            }
+            commandAssembly.append(midAssembly);
+            for (int j = 0; j < i + 1; ++j)
+            {
+                commandAssembly.append("\\");
+            }
+            for (int j = 0; j < 5 - (i + 1); ++j)
+            {
+                commandAssembly.append(" ");
+            }
+            commandAssembly.append('\n');
+        }
+
+        return commandAssembly.toString();
     }
     static String buildSection(int size)
     {
