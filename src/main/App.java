@@ -1,14 +1,13 @@
 package main;
 
+import java.util.Arrays;
+
 public class App
 {
     public static void main(String[] args) 
     {
-        int s = 3;
-        System.out.print(buildCommandPod(s));
-        System.out.print(buildSectionSeperator(s));
-        System.out.print(buildFirstSectionHalf(s));
-        System.out.print(buildSecondSectionHalf(s));
+        int s = 5;
+        System.out.print(buildRocket(s));
     }
     static String buildCommandPod(int size)
     {
@@ -106,7 +105,23 @@ public class App
     {
         var rocketAssembly = new StringBuilder();
         rocketAssembly.append(buildCommandPod(size));
-        
-        return null;
+        rocketAssembly.append(buildSectionSeperator(size));
+        rocketAssembly.append(buildFirstSectionHalf(size));
+        rocketAssembly.append(buildSecondSectionHalf(size));
+        rocketAssembly.append(buildSectionSeperator(size));
+        rocketAssembly.append(buildSecondSectionHalf(size));
+        rocketAssembly.append(buildFirstSectionHalf(size));
+        rocketAssembly.append(buildSectionSeperator(size));
+
+        var spareCommandPod = buildCommandPod(size);
+
+        var choppedPod = spareCommandPod.split("\n");
+
+        var choppedBottom = Arrays.copyOfRange(choppedPod, 0, choppedPod.length-1);
+
+        var definitelyNotACommandPodWorkshoppedIntoARocketEngine = String.join("\n", choppedBottom);
+
+        rocketAssembly.append(definitelyNotACommandPodWorkshoppedIntoARocketEngine);
+        return rocketAssembly.toString();
     }
 }
