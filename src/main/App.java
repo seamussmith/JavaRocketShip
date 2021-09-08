@@ -4,21 +4,24 @@ public class App
 {
     public static void main(String[] args) 
     {
-        int s = 6;
+        int s = 5;
         System.out.print(buildCommandPod(s));
         System.out.print(buildSectionSeperator(s));
     }
     static String buildCommandPod(int size)
     {
-        // Only increase size of mid section every two sizes
+        // Only increase width of mid section every even size
         var midAssembly = "*".repeat(size-(size%2));
 
         var commandAssembly = new StringBuilder();
 
+        // Only add one to the height of the pod every odd number
         var sizeAddition = size/2 + (size%2);
 
         for (int i = 0; i != size+sizeAddition; ++i)
         {
+            // Build the left side
+
             for (int j = 0; j < (size+sizeAddition) - i; ++j)
             {
                 commandAssembly.append(" ");
