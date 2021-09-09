@@ -1,7 +1,5 @@
 package gov.nasa.rocketbuildingtools;
 
-import java.util.Arrays;
-
 public class VehicleAssemblyBay
 {
     public static String buildRocket(int size)
@@ -161,29 +159,6 @@ public class VehicleAssemblyBay
             sectionAssembly.append("|\n");
         }
         return sectionAssembly.toString();
-    }
-    static String buildMakeshiftEngine(int size)
-    {
-        // CRAP! We accidentally ordered two command pods instead of one engine and one pod!
-        // WHAT DO WE DO!?!?
-        // Uhhh, chop one up and make it into a makeshift engine! Yeah!
-
-        // Our victim
-        var spareCommandPod = buildCommandPod(size);
-
-        // Chop off the bottom most part of the command pod
-
-        var choppedPod = spareCommandPod.split("\n");
-
-        var choppedBottom = Arrays.copyOfRange(choppedPod, 0, choppedPod.length-1);
-
-        var probablyNotASpaceCertifiedEngine = String.join("\n", choppedBottom);
-        
-        // And make sure to take stuff out of the command pod!
-        // Wait a second... this is the end of the function...
-        // DONT FLY THAT SHIP!!!!
-
-        return probablyNotASpaceCertifiedEngine;
     }
     static String buildSectionSeperator(int size)
     {
