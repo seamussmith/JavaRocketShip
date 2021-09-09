@@ -82,7 +82,7 @@ public class VehicleAssemblyBay
 
         return commandAssembly.toString();
     }
-    static String buildFirstSectionHalf(int size)
+    static String buildSecondSectionHalf(int size)
     {
         var sectionAssembly = new StringBuilder();
         for (int i = size; i > 0; --i)
@@ -122,7 +122,7 @@ public class VehicleAssemblyBay
         return sectionAssembly.toString();
     }
     
-    static String buildSecondSectionHalf(int size)
+    static String buildFirstSectionHalf(int size)
     {
         var sectionAssembly = new StringBuilder();
         for (int i = 1; i <= size; ++i)
@@ -130,23 +130,34 @@ public class VehicleAssemblyBay
             // Wall
             sectionAssembly.append("|");
             // Surface without arrow
-            // Starts with (size * 2 - 1) dots, going down to (size) dots
-            for (int j = 0; j < size + (size - i); ++j)
+            // Starts with (size) dots going up to (size * 2 - 1) dots
+            for (int j = 0; j < size - (i); ++j)
             {
                 sectionAssembly.append(".");
             }
             // Surface with arrow
-            // Starts with 1 arrow going up to (size * 2) arrows
+            // Starts with (size * 2) arrows, going down to 1 arrow
             for (int j = 0; j < size + (i - size); ++j)
             {
                 sectionAssembly.append("/\\");
             }
             // Surface without arrow
-            for (int j = 0; j < size + (size - i); ++j)
+            for (int j = 0; j < size - (i); ++j)
             {
                 sectionAssembly.append(".");
             }
-            // Wall
+            for (int j = 0; j < size - (i); ++j)
+            {
+                sectionAssembly.append(".");
+            }
+            for (int j = 0; j < size + (i - size); ++j)
+            {
+                sectionAssembly.append("/\\");
+            }
+            for (int j = 0; j < size - (i); ++j)
+            {
+                sectionAssembly.append(".");
+            }
             sectionAssembly.append("|\n");
         }
         return sectionAssembly.toString();
