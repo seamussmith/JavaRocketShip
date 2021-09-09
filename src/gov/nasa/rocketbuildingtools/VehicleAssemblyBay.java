@@ -17,9 +17,10 @@ public class VehicleAssemblyBay
         var firstSectionHalf = buildFirstSectionHalf(size);
         var secondSectionHalf = buildSecondSectionHalf(size);
         var makeshiftEngine = buildMakeshiftEngine(size);
+        var commandPod = buildCommandPod(size);
 
         // Command Pod
-        rocketAssembly.append(buildCommandPod(size));
+        rocketAssembly.append(commandPod);
 
         rocketAssembly.append(sectionSeperator);
         
@@ -36,7 +37,7 @@ public class VehicleAssemblyBay
         rocketAssembly.append(sectionSeperator);
 
         // Attach the engine
-        rocketAssembly.append(makeshiftEngine);
+        rocketAssembly.append(commandPod);
 
         // And we are good to go!
         return rocketAssembly.toString();
