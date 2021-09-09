@@ -16,7 +16,6 @@ public class VehicleAssemblyBay
         var sectionSeperator = buildSectionSeperator(size);
         var firstSectionHalf = buildFirstSectionHalf(size);
         var secondSectionHalf = buildSecondSectionHalf(size);
-        var makeshiftEngine = buildMakeshiftEngine(size);
         var commandPod = buildCommandPod(size);
 
         // Command Pod
@@ -91,7 +90,7 @@ public class VehicleAssemblyBay
             sectionAssembly.append("|");
             // Surface without arrow
             // Starts with (size) dots going up to (size * 2 - 1) dots
-            for (int j = 0; j < size + (size - i); ++j)
+            for (int j = 0; j < size - (i); ++j)
             {
                 sectionAssembly.append(".");
             }
@@ -102,7 +101,19 @@ public class VehicleAssemblyBay
                 sectionAssembly.append("\\/");
             }
             // Surface without arrow
-            for (int j = 0; j < size + (size - i); ++j)
+            for (int j = 0; j < size - (i); ++j)
+            {
+                sectionAssembly.append(".");
+            }
+            for (int j = 0; j < size - (i); ++j)
+            {
+                sectionAssembly.append(".");
+            }
+            for (int j = 0; j < size + (i - size); ++j)
+            {
+                sectionAssembly.append("\\/");
+            }
+            for (int j = 0; j < size - (i); ++j)
             {
                 sectionAssembly.append(".");
             }
